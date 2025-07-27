@@ -47,6 +47,9 @@ import com.target.targetcasestudy.ui.theme.TargetBlack
 import com.target.targetcasestudy.ui.theme.TargetRed
 import com.target.targetcasestudy.ui.theme.TargetWhite
 
+/**
+ * Figma -> https://www.figma.com/design/hIHMSLgHFhWMyQfVp8fZHc/Android-Technical-Screener?node-id=6-2834&t=jGbbVgF6VasbgbDF-4
+ */
 @Composable
 fun DealListScreen(
     modifier: Modifier = Modifier,
