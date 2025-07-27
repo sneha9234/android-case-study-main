@@ -2,20 +2,24 @@
 androidGradlePluginVersion     = '8.9.1'
 androidXActivity               = "1.10.1"
 androidXAppCompat              = "1.7.0"
+androidXCore                   = "1.12.0"
 androidXTestCore               = "1.6.1"
 androidXTestRunner             = "1.6.2"
+coil                           = "2.5.0"
 composeBom                     = "2025.03.01"
 composeCompiler                = "1.5.11"
+coroutinesTest                 = "1.7.3"
 espresso                       = "3.6.1"
 hilt                           = "2.56.1"
 hiltNavigationCompose          = "1.2.0"
 junit                          = '4.13.2'
 kotlin                         = "2.1.20"
 ksp                            = "2.1.20-1.0.32"
+mockito                        = "5.3.1"
+mockitoKotlin                  = "5.1.0"
 moshi                          = "1.15.2"
 retrofit                       = "2.11.0"
 okHttp                         = "4.12.0"
-glide                          = "4.16.0"
 gson                           = "2.12.1"
 
 
@@ -28,7 +32,9 @@ androidXAppCompat        = { module = "androidx.appcompat:appcompat", version.re
 androidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.2.1"
 androidXRecyclerView     = "androidx.recyclerview:recyclerview:1.4.0"
 androidXActivityCompose  = { module = "androidx.activity:activity-compose", version.ref = "androidXActivity" }
+androidXCore             = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
 
+coilCompose              = { module = "io.coil-kt:coil-compose", version.ref = "coil"}
 composeBom               = { module = "androidx.compose:compose-bom", version.ref = "composeBom"}
 composeRuntime           = { module = "androidx.compose.runtime:runtime"}
 composeUi                = { module = "androidx.compose.ui:ui"}
@@ -37,7 +43,6 @@ androidXUITooling        = { module = "androidx.compose.ui:ui-tooling"}
 composeMaterialDesign    = { module = "androidx.compose.material:material"}
 
 gson                     = {module = "com.google.code.gson:gson", version.ref = "gson"}
-glide                    = {module = "com.github.bumptech.glide:glide", version.ref = "glide"}
 hiltAndroid              = {module = "com.google.dagger:hilt-android", version.ref = "hilt"}
 hiltCompiler             = {module = "com.google.dagger:hilt-compiler", version.ref = "hilt"}
 hiltNavigationCompose    = {module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose"}
@@ -55,6 +60,9 @@ androidXTestExtJunit     = "androidx.test.ext:junit:1.2.1"
 androidXTestCore         = {module = "androidx.test:core", version.ref = "androidXTestCore"}
 androidXTestRunner       = {module = "androidx.test:runner", version.ref = "androidXTestRunner" }
 espressoCore             = {module="androidx.test.espresso:espresso-core", version.ref="espresso"}
+mockitoCore              = {module = "org.mockito:mockito-core", version.ref = "mockito"}
+mockitoKotlin            = {module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin"}
+coroutinesTest           = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesTest"}
 
 [plugins]
 kspPlugin                = { id = "com.google.devtools.ksp", version.ref = "ksp" }

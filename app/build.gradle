@@ -47,6 +47,7 @@ dependencies {
   implementation libs.androidXActivityCompose
   implementation libs.androidXConstraintLayout
   implementation libs.androidXRecyclerView
+  implementation libs.androidXCore
 
   //Compose
   implementation platform(libs.composeBom)
@@ -69,7 +70,7 @@ dependencies {
   implementation libs.jackson
 
   // Image Loading
-  implementation libs.glide
+  implementation libs.coilCompose
 
   implementation libs.hiltAndroid
   implementation libs.hiltNavigationCompose
@@ -77,6 +78,9 @@ dependencies {
 
   // Testing
   testImplementation libs.junit
+  testImplementation libs.mockitoCore
+  testImplementation libs.mockitoKotlin
+  testImplementation libs.coroutinesTest
   androidTestImplementation libs.androidXTestRunner
   androidTestImplementation libs.androidXTestCore
   androidTestImplementation libs.androidXTestExtJunit
