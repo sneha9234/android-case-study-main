@@ -1,0 +1,83 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+android {
+  compileSdk 35
+  defaultConfig {
+    applicationId "com.target.targetcasestudy"
+    minSdkVersion 24
+    targetSdkVersion 35
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_21
+    targetCompatibility JavaVersion.VERSION_21
+  }
+
+  kotlin {
+    jvmToolchain(21)
+  }
+
+  buildFeatures {
+    compose true
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  namespace 'com.target.targetcasestudy'
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation libs.kotlin
+
+  implementation libs.androidXAppCompat
+  implementation libs.androidXActivityCompose
+  implementation libs.androidXConstraintLayout
+  implementation libs.androidXRecyclerView
+
+  //Compose
+  implementation platform(libs.composeBom)
+  implementation libs.composeRuntime
+  implementation libs.composeUi
+  implementation libs.composeFoundation
+  implementation libs.androidXUITooling
+  implementation libs.composeMaterialDesign
+
+  implementation libs.retrofit
+  implementation libs.retrofitRx2Adapter
+  implementation libs.okHttp
+
+  // JSON Parsing
+  implementation libs.gson
+
+  implementation libs.moshi
+  ksp libs.moshiKotlinCodeGen
+
+  implementation libs.jackson
+
+  // Image Loading
+  implementation libs.glide
+
+  implementation libs.hiltAndroid
+  ksp libs.hiltCompiler
+
+  // Testing
+  testImplementation libs.junit
+  androidTestImplementation libs.androidXTestRunner
+  androidTestImplementation libs.androidXTestCore
+  androidTestImplementation libs.androidXTestExtJunit
+  androidTestImplementation libs.espressoCore
+}
