@@ -57,7 +57,7 @@ dependencies {
   implementation libs.composeMaterialDesign
 
   implementation libs.retrofit
-  implementation libs.retrofitRx2Adapter
+  implementation libs.retrofitMoshiConverter
   implementation libs.okHttp
 
   // JSON Parsing
@@ -72,6 +72,7 @@ dependencies {
   implementation libs.glide
 
   implementation libs.hiltAndroid
+  implementation libs.hiltNavigationCompose
   ksp libs.hiltCompiler
 
   // Testing
