@@ -37,6 +37,17 @@ android {
     }
   }
   namespace 'com.target.targetcasestudy'
+
+  packaging {
+    resources {
+      excludes += [
+        'META-INF/LICENSE.md',
+        'META-INF/LICENSE-notice.md',
+        'META-INF/LICENSE',
+        'META-INF/NOTICE'
+      ]
+    }
+  }
 }
 
 dependencies {
@@ -85,4 +96,13 @@ dependencies {
   androidTestImplementation libs.androidXTestCore
   androidTestImplementation libs.androidXTestExtJunit
   androidTestImplementation libs.espressoCore
+
+  // For local unit tests
+  testImplementation "com.squareup.okhttp3:mockwebserver:4.12.0"
+  testImplementation "io.mockk:mockk:1.13.8"
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
+  testImplementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+  // For Android instrumented tests (UI tests)
+  androidTestImplementation "io.mockk:mockk-android:1.13.8"
 }

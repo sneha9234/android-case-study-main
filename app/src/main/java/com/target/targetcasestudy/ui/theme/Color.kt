@@ -34,3 +34,7 @@ val Color.Companion.TargetWhite: Color
     @Composable @ReadOnlyComposable
     get() = colorResource(id = R.color.target_white)
 
+val Color.Companion.GrayLightest: Color
+    @Composable @ReadOnlyComposable
+    get() = colorResource(id = R.color.gray_lightest)
+

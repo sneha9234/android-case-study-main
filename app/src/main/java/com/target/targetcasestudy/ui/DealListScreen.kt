@@ -1,13 +1,16 @@
 package com.target.targetcasestudy.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -40,6 +43,7 @@ import com.target.targetcasestudy.api.Deal
 import com.target.targetcasestudy.api.Price
 import com.target.targetcasestudy.ui.theme.GrayDark
 import com.target.targetcasestudy.ui.theme.GrayDarkest
+import com.target.targetcasestudy.ui.theme.GrayLightest
 import com.target.targetcasestudy.ui.theme.GreenStock
 import com.target.targetcasestudy.ui.theme.RedDark
 import com.target.targetcasestudy.ui.theme.RobotoFontFamily
@@ -53,7 +57,8 @@ import com.target.targetcasestudy.ui.theme.TargetWhite
 @Composable
 fun DealListScreen(
     modifier: Modifier = Modifier,
-    viewModel: DealListViewModel = hiltViewModel()
+    viewModel: DealListViewModel = hiltViewModel(),
+    onDealClick: (String) -> Unit
 ) {
     val deals by viewModel.deals.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
@@ -61,6 +66,7 @@ fun DealListScreen(
 
     Column(
         modifier = modifier.fillMaxSize()
+                .background(Color.GrayLightest)
     ) {
         Box(
             modifier = Modifier
@@ -81,14 +87,12 @@ fun DealListScreen(
                         lineHeight = 24.sp,
                     )
                 },
-                backgroundColor = Color.TargetWhite
+                backgroundColor = Color.TargetWhite,
+                elevation = 4.dp
             )
 
-            Divider(
-                color = Color.LightGray,
-                thickness = 1.dp
-            )
-            
+            Spacer(Modifier.height(1.dp))
+
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -138,7 +142,7 @@ fun DealListScreen(
                                 items = deals,
                                 key = { it.id }
                             ) { deal ->
-                                DealCard(deal = deal)
+                                DealCard(deal = deal, onDealClick = { onDealClick(deal.id.toString()) })
                                 Divider(
                                     modifier = Modifier.padding(horizontal = 16.dp),
                                     color = Color(0xFFD6D6D6),
@@ -154,11 +158,14 @@ fun DealListScreen(
 }
 
 @Composable
-fun DealCard(deal: Deal) {
+fun DealCard(
+    deal: Deal,
+    onDealClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.TargetWhite)
+            .clickable(onClick = onDealClick)
     ) {
         Row(
             modifier = Modifier
@@ -279,5 +286,5 @@ fun DealCardPreview() {
         availability = "In stock"
     )
     
-    DealCard(deal = mockDeal)
+    DealCard(deal = mockDeal, onDealClick = {})
 }
