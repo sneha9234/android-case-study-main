@@ -1,52 +1,35 @@
 package com.target.targetcasestudy
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.target.targetcasestudy.data.DealRepository
+import androidx.core.view.WindowCompat
 import com.target.targetcasestudy.ui.DealListScreen
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-  @Inject
-  lateinit var dealRepository: DealRepository
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    
+    setStatusBarAndNavigationBarColor()
+    
     setContent {
       DealListScreen()
     }
-    
-    // Test API call and log response
-    testApiCall()
   }
-  
-  private fun testApiCall() {
-    lifecycleScope.launch {
-      Log.d("MainActivity", "Starting API call...")
-      
-      dealRepository.getDeals()
-        .onSuccess { response ->
-          Log.d("MainActivity", "API call successful!")
-          Log.d("MainActivity", "Number of deals: ${response.deals.size}")
-          response.deals.forEachIndexed { index, deal ->
-            Log.d("MainActivity", "Deal $index: ${deal.title} - ${deal.regularPrice.displayString}")
-            if (deal.salePrice != null) {
-              Log.d("MainActivity", "  Sale Price: ${deal.salePrice.displayString}")
-            }
-            Log.d("MainActivity", "  Aisle: ${deal.aisle}, Availability: ${deal.availability}")
-            Log.d("MainActivity", "  Image URL: ${deal.imageUrl}")
-          }
-        }
-        .onFailure { error ->
-          Log.e("MainActivity", "API call failed: ${error.message}", error)
-        }
-    }
+
+  private fun setStatusBarAndNavigationBarColor() {
+    enableEdgeToEdge()
+    WindowCompat.setDecorFitsSystemWindows(window, false)
+
+    window.navigationBarColor = Color.WHITE
+
+    val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+    windowInsetsController.isAppearanceLightStatusBars = false
+    windowInsetsController.isAppearanceLightNavigationBars = true
   }
 }
