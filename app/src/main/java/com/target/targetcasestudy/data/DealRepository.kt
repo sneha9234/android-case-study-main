@@ -20,12 +20,7 @@ class DealRepository @Inject constructor(
         }
     }
     
-    suspend fun getDeal(dealId: Int): Result<Deal> {
-        return try {
-            val response = dealApi.retrieveDeal(dealId)
-            Result.success(response)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+    suspend fun getDeal(id: String): Deal {
+        return dealApi.retrieveDeal(id)
     }
 } 

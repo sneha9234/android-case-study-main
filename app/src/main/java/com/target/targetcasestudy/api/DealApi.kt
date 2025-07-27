@@ -11,5 +11,5 @@ interface DealApi {
   suspend fun retrieveDeals(): DealResponse
 
   @GET("deals/{dealId}")
-  suspend fun retrieveDeal(@Path("dealId") dealId: Int): Deal
+  suspend fun retrieveDeal(@Path("dealId") id: String): Deal
 } 

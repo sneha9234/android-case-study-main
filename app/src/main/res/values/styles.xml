@@ -5,7 +5,7 @@
     <!-- Edge-to-edge setup - status bar will be drawn by Compose -->
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     <item name="android:statusBarColor">@color/target_red</item>
-    <item name="android:navigationBarColor">@color/target_red</item>
+    <item name="android:navigationBarColor">@color/target_white</item>
   </style>
 
 </resources>
